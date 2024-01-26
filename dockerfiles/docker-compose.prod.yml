@@ -1,0 +1,23 @@
+version: "3.9"
+name: strawberry-sample
+
+services:
+  web:
+    container_name: strawberry-sample
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile
+      target: prod-image
+    volumes:
+      - ../:/app
+      - ../manage.py:/app/manage.py
+    networks:
+      - strawberry-sample
+    ports:
+      - "8000:8000"
+
+networks:
+  strawberry-sample:
+    driver: bridge
+    ipam:
+      driver: default

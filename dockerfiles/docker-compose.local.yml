@@ -1,0 +1,42 @@
+version: "3.9"
+name: strawberry-sample
+
+services:
+  web:
+    container_name: strawberry-sample
+    env_file:
+      - ../src/settings/envs/.local
+    build:
+      context: ../
+      dockerfile: dockerfiles/Dockerfile
+      target: local-image
+    volumes:
+      - ../:/app
+      - ../manage.py:/app/manage.py
+    networks:
+      - strawberry-sample
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    container_name: cosmos_db
+    restart: unless-stopped
+    image: postgres:16.0
+    env_file:
+      - ../src/settings/envs/.local
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - /tmp:/backups
+    networks:
+      - strawberry-sample
+    ports:
+      - 5432:5432
+volumes:
+  postgres_data:
+
+networks:
+  strawberry-sample:
+    driver: bridge
+    ipam:
+      driver: default
