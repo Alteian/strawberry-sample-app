@@ -22,6 +22,7 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
+            is_verified=True,  # NOTE: This is a temporary solution
         )
         user.set_password(password)
         user.save(using=self._db)
