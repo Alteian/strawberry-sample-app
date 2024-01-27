@@ -1,5 +1,11 @@
 # Strawberry Graphql + Django Example
 
+Fresh start command:
+
+```bash
+sh run.sh docker_fresh_start local
+```
+
 Strawberry Core Project:
 <https://github.com/strawberry-graphql>
 
