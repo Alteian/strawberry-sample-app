@@ -3,7 +3,7 @@ name: strawberry-sample
 
 services:
   web:
-    container_name: strawberry-sample
+    container_name: strawberry-sample-back
     build:
       context: ../
       dockerfile: dockerfiles/Dockerfile

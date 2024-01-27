@@ -40,6 +40,7 @@ urlpatterns = [
         csrf_exempt(GraphQLView.as_view(schema=schema, graphiql=settings.GRAPHIQL_ENABLED, allow_queries_via_get=True)),
     ),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 if settings.DEBUG:
     import debug_toolbar

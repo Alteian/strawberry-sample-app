@@ -3,7 +3,7 @@ name: strawberry-sample
 
 services:
   web:
-    container_name: strawberry-sample
+    container_name: strawberry-sample-back
     env_file:
       - ../src/settings/envs/.local
     build:
@@ -20,7 +20,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: cosmos_db
+    container_name: strawberry-sample-db
     restart: unless-stopped
     image: postgres:16.0
     env_file:

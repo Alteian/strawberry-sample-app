@@ -14,16 +14,13 @@ SECRET_KEY = config("SECRET_KEY")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-HOST = config("DOCKER_HOST", default=True)
-if HOST is True:
-    HOST = "host.docker.internal"
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": config("POSTGRES_DATABASE", default="postgres"),
         "USER": config("POSTGRES_USER", default="postgres"),
-        "HOST": HOST,
+        "HOST": config("POSTGRES_HOST", default="localhost"),
         "PORT": config("POSTGRES_PORT", default="5432"),
         "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
         "CONN_MAX_AGE": 600,

@@ -4,9 +4,11 @@ from django.conf import settings
 from strawberry import Schema
 from strawberry.extensions import QueryDepthLimiter
 from strawberry.schema.config import StrawberryConfig
+from strawberry.tools import merge_types
 from strawberry_django.optimizer import DjangoOptimizerExtension
 
 from src.apps.auth_service.graphql.mutations import AuthServiceMutation
+from src.apps.product.graphql.queries import ProductQuery
 from src.apps.user.graphql.queries import UserQuery
 
 Mutation = AuthServiceMutation
@@ -23,7 +25,10 @@ if settings.DEBUG:
     schema_extensions.append(pyinstrument.PyInstrument(report_path=pyinstrument_path))
 
 
-Query = UserQuery
+Query = merge_types(
+    "Query",
+    types=(UserQuery, ProductQuery),
+)
 
 schema = Schema(
     query=Query,
