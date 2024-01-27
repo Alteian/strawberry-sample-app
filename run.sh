@@ -26,6 +26,7 @@ case "$1" in
         docker-compose -f dockerfiles/docker-compose.$environment.yml up --build -d
         docker-compose -f dockerfiles/docker-compose.$environment.yml exec web python3 manage.py migrate
         docker-compose -f dockerfiles/docker-compose.$environment.yml exec web python3 manage.py dummy_product_data
+        docker-compose -f dockerfiles/docker-compose.$environment.yml exec web python3 manage.py collectstatic --noinput
         ;;
     *)
         echo "Error: Provide valid argument (docker_build, docker_run, docker_stop, docker_makemigrations, docker_migrate, docker_fresh_start)"

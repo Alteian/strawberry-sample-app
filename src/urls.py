@@ -46,7 +46,7 @@ if settings.DEBUG:
     import debug_toolbar
 
     def pyinstrument_report(request: HttpRequest) -> HttpResponse:
-        with Path("pyinstrument.html").open("r") as file:
+        with Path("src/pyinstrument.html").open("r") as file:
             response = HttpResponse(file.read(), content_type="text/html")
             return response
 
