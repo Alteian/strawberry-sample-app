@@ -29,7 +29,7 @@ case "$1" in
         docker-compose -f dockerfiles/docker-compose.$environment.yml exec web python3 manage.py collectstatic --noinput
         ;;
     *)
-        echo "Error: Provide valid argument (docker_build, docker_run, docker_stop, docker_makemigrations, docker_migrate, docker_fresh_start)"
+        echo "Error: Provide valid argument (docker_build, docker_run, docker_stop, docker_fresh_start)"
         exit 1
         ;;
 esac
