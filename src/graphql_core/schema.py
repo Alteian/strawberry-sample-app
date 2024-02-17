@@ -12,6 +12,7 @@ from src.apps.product.graphql.mutations import ProductMutation
 from src.apps.product.graphql.queries import ProductQuery
 from src.apps.user.graphql.mutations import GenericMutation
 from src.apps.user.graphql.queries import UserQuery
+from src.apps.user.graphql.subscriptions import CountSubscription
 
 Mutation = merge_types(
     "Mutation",
@@ -38,6 +39,7 @@ Query = merge_types(
 schema = Schema(
     query=Query,
     mutation=Mutation,
+    subscription=CountSubscription,
     config=StrawberryConfig(
         auto_camel_case=True,
     ),

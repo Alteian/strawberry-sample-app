@@ -81,7 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "src.wsgi.application"
-
+ASGI_APPLICATION = "src.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

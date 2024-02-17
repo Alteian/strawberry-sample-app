@@ -38,7 +38,12 @@ urlpatterns = [
     path(
         "graphql/",
         csrf_exempt(
-            GraphQLView.as_view(schema=schema, graphql_ide=settings.GRAPHIQL_ENABLED, allow_queries_via_get=True)
+            GraphQLView.as_view(
+                schema=schema,
+                graphql_ide=settings.GRAPHIQL_ENABLED,
+                allow_queries_via_get=True,
+                subscriptions_enabled=True,
+            )
         ),
     ),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
