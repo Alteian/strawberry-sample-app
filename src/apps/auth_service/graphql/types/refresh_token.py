@@ -12,5 +12,4 @@ class RefreshTokenType:
     id: NodeID[uuid.UUID]
     user: strawberry.auto
     token: strawberry.auto
-    created: strawberry.auto
-    revoked: strawberry.auto
+    created_at: strawberry.auto

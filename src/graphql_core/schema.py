@@ -8,10 +8,15 @@ from strawberry.tools import merge_types
 from strawberry_django.optimizer import DjangoOptimizerExtension
 
 from src.apps.auth_service.graphql.mutations import AuthServiceMutation
+from src.apps.product.graphql.mutations import ProductMutation
 from src.apps.product.graphql.queries import ProductQuery
+from src.apps.user.graphql.mutations import GenericMutation
 from src.apps.user.graphql.queries import UserQuery
 
-Mutation = AuthServiceMutation
+Mutation = merge_types(
+    "Mutation",
+    types=(GenericMutation, AuthServiceMutation, ProductMutation),
+)
 
 
 schema_extensions = [

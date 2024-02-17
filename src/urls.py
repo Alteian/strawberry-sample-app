@@ -37,7 +37,9 @@ class GraphQLView(AsyncGraphQLView):
 urlpatterns = [
     path(
         "graphql/",
-        csrf_exempt(GraphQLView.as_view(schema=schema, graphiql=settings.GRAPHIQL_ENABLED, allow_queries_via_get=True)),
+        csrf_exempt(
+            GraphQLView.as_view(schema=schema, graphql_ide=settings.GRAPHIQL_ENABLED, allow_queries_via_get=True)
+        ),
     ),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),

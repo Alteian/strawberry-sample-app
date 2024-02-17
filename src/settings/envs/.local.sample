@@ -1,7 +1,7 @@
 DJANGO_SETTINGS_MODULE=src.settings.local
 SECRET_KEY=5up3r53cr37k3yv01l4
 DEBUG=True
-GRAPHIQL_ENABLED=True
+GRAPHIQL_ENABLED=graphiql
 
 POSTGRES_HOST=host.docker.internal
 POSTGRES_DATABASE=postgres

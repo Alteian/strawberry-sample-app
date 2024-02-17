@@ -28,7 +28,9 @@ DATABASES = {
 }
 
 COOKIE_DOMAIN = config("COOKIE_DOMAIN", cast=str, default="localhost")
-GRAPHIQL_ENABLED = config("GRAPHIQL_ENABLED", cast=bool, default=False)
+GRAPHIQL_ENABLED = config("GRAPHIQL_ENABLED", cast=str, default="None")
+if GRAPHIQL_ENABLED == "None":
+    GRAPHIQL_ENABLED = None
 
 AUTH_TOKEN_EXPIRATION_DELTA = timedelta(seconds=3600).total_seconds()
 REFRESH_TOKEN_EXPIRATION_DELTA = timedelta(days=7).total_seconds()
